@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.27;
 
 //Interface ERC20
 interface IERC20 {
@@ -16,10 +16,11 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-//Smart Contract DEV Coin
+//Smart Contract Simple DEV Coin
 contract DEVCoin is IERC20 {
 
-    //atributes
+    //ATRIBUTES
+    //The name and the token of DEV Coin - the Currency of the IT professional
     string public constant name = "DEV Coin";
     string public constant symbol = "DEV";
     uint public constant decimals = 10;
@@ -27,21 +28,26 @@ contract DEVCoin is IERC20 {
     mapping(address => uint256) balances;
     mapping(address => mapping(address=>uint256)) allowed;
 
+    // The supply of the DEV Coin is the same of Bitcoin
     uint256 totalSupply_ = 21000000;
 
+    //the connstructor of smart contract
     constructor() {
         balances[msg.sender] = totalSupply_;
     }
 
-    //methods
+    //METHODS
+    //return the total supply os DEV Coin
     function totalSupply() public override view returns(uint256) {
         return totalSupply_;
     }
 
+    //return the balance of the owner contract
     function balanceOf(address tokenOwner) public override view returns (uint256) {
         return balances[tokenOwner];
     }
 
+    //transfer a amount of tokens for a specific address
     function transfer(address receiver, uint256 numTokens) public override returns (bool) {
         require(numTokens <= balances[msg.sender]);
         balances[msg.sender] = balances[msg.sender] - numTokens;
@@ -50,16 +56,19 @@ contract DEVCoin is IERC20 {
         return true;
     }
 
+    // approve the transfer a amount of tokens for a address
     function approve(address delegate, uint256 numTokens) public override returns (bool){
         allowed[msg.sender][delegate] = numTokens;
         emit Approval(msg.sender, delegate, numTokens);
         return true;
     }
 
+    // return the allowance disponible for a address
     function allowance(address owner, address delegate) public override view returns (uint256){
         return allowed[owner][delegate];
     }
 
+    // tranfer a amount of tokens of the owner account to the buyer occount
     function transferFrom(address owner, address buyer, uint256 numTokens) public override returns (bool){
         require(numTokens <= balances[owner]);
         require(numTokens <= allowed[owner][msg.sender]);
@@ -70,5 +79,4 @@ contract DEVCoin is IERC20 {
         emit Transfer(owner, buyer, numTokens);
         return true;
     }
-
 }
