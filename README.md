@@ -15,3 +15,6 @@ Smart Contract que desenvolve um sistema com vincionalidades super simples de vo
 Desenvolvido com objetivo acadêmico para exercitar o desenvolvimen to em linguagem Solidity.
 
 [DIOVoting.sol](contracts/DIOVoting.sol)
+
+## Tecnologias
+![Static Badge](https://img.shields.io/badge/Solidity)
