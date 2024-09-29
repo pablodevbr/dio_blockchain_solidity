@@ -17,4 +17,4 @@ Desenvolvido com objetivo acadêmico para exercitar o desenvolvimen to em lingua
 [DIOVoting.sol](contracts/DIOVoting.sol)
 
 ## Tecnologias
-![Static Badge](https://img.shields.io/badge/Solidity)
+* SOLIDITY
