@@ -18,3 +18,4 @@ Desenvolvido com objetivo acadêmico para exercitar o desenvolvimen to em lingua
 
 ## Tecnologias
 * SOLIDITY
+* REMIX
